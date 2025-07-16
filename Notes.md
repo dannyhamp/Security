@@ -40,7 +40,7 @@ Scan for ports on lsited hosts
     ssh -S /tmp/demo demo -O cancel -D 9050
 
   ## Add listenting port forward
-  ssh -S /tmp/demo demo -O forward -L1111:192.168.28.100:80 -L 1112:192.168.28.100:2222
+    ssh -S /tmp/demo demo -O forward -L1111:192.168.28.100:80 -L 1112:192.168.28.100:2222
   ## Remove port forward
   ssh -S /tmp/demo demo -O cancel -L1111:192.168.28.100:80 -L 1112:192.168.28.100:2222
 
