@@ -18,3 +18,11 @@ Open source intel:
 Authenticate to JUmp box, -S create socket file to store socket s, -M uses multiplexing, Kepp this open or the connection will die. up to 17 hops deep only unising a single connection
   Create master socket:
   ssh -MS /tmp/jump student@10.50.15.68 (own ip)
+  ssh -MS /tmp/demo demo1@10.50.14.70 (demo ip)
+
+After moving to a new box do a ping sweep:
+  use duckduck go to convert cider notation
+  for i in {97..126}; do (ping -c 1 192.168.28.$i | grep "bytes from"&); done
+                ^                          ^
+        (availible ips in cider)      (target ip to scan)
+  
