@@ -93,7 +93,7 @@ use semicolons in test boxes on the webserver
     ;ls -la /var/www
 
 ### upload key
-    ;echo "ssh key" > /var/www/.ssh/authorized_keys #>> for append
+    ;echo "ssh key" >> /var/www/.ssh/authorized_keys
     ;cat /var/www/.ssh/authorized_keys
 ### ssh into machine
         ssh -i /home/student/www/.ssh/id_rsa www-data@127.0.0.1 - p1112
