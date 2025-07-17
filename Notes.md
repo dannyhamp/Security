@@ -50,5 +50,5 @@ proxychains nc (targetip) (taget port)
 ### http-enum.nse
     A scirpt that can be used with nmao to enum the website off a webserver
     nmap --scripts=http-enum.nse <ip>
-
+### Inspect websever / Console
 
