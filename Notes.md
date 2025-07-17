@@ -32,3 +32,12 @@ proxychains nc (targetip) (taget port)
     ssh -S /tmp/demo demo -O cancel -L1111:192.168.28.100:80 -L 1112:192.168.28.100:2222
 ### verify port is open/banner grab
     ss -ntlp | grep (port number)
+# Example on how to Master socket between mulitple hosts
+
+        ssh -MS /tmp/jump jump student@ip
+        ssh -S /tmp/jump jump -O  forward -D 9050
+        ssh -S /tmp/jump jump -L 1111:1.2.3.4:80 -L 1112:1.2.3.4:22
+
+        ssh -ms /tmp/t1 cred@127.0.0.1 -p 1112
+        ssh -S /tmp/jump jump -O cancel -D 9050 >>> ssh -s /tmp/t1 t1 -O farward -D 9050
+        ssh -s  /tmp/t1 t1 -O forward -L 2111:2.3.4.5:22 -L 2112:2.3.4.5:80
