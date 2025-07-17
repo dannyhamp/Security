@@ -18,9 +18,9 @@ Authenticate to JUmp box, -S create socket file to store socket s, -M uses multi
 # After moving to a new box do a ping sweep:
     for i in {97..126}; do (ping -c 1 192.168.28.$i | grep "bytes from"&); done
 
-Scan for ports on lsited hosts
-set up dynamic tunnel:
-ssh -S /tmp/demo demo -O forward -D 9050
+Scan for ports on listed on hosts
+# set up dynamic tunnel:
+        ssh -S /tmp/demo demo -O forward -D 9050
 Proxychains nmap (taget ip) 
 verify port
 proxychains nc (targetip) (taget port)
@@ -30,5 +30,5 @@ ssh -S /tmp/demo demo -O cancel -D 9050
     ssh -S /tmp/demo demo -O forward -L1111:192.168.28.100:80 -L 1112:192.168.28.100:2222
 ## Remove port forward
     ssh -S /tmp/demo demo -O cancel -L1111:192.168.28.100:80 -L 1112:192.168.28.100:2222
-### verify port is op 
+### verify port is open/banner grab
     ss -ntlp | grep (port number)
