@@ -144,3 +144,6 @@ cahnge selection number until info shows up
 
     Union SELECT name,type,cost from session.car 
     @@version to see version of sql 
+
+    #TEST  OUT VULNERBALE FIELDS WITH ' to see if they auto close
+    'Hacker', 'DIG', 'Hacker','password','password@username',1) #'
