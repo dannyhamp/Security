@@ -3,6 +3,7 @@ Stack#: 10
 Username: DAHA-019-M
 Password: oybOV5rOD7Jo
 Jump: 10.50.15.68
+winops: 10.50.152.93
 # Operations and Scanning
 Open source intel:
 social medial, linkdin, whois
@@ -147,3 +148,16 @@ cahnge selection number until info shows up
 
     #TEST  OUT VULNERBALE FIELDS WITH ' to see if they auto close
     'Hacker', 'DIG', 'Hacker','password','password@username',1) #'
+
+
+# REverse Engineering
+## Dissasembly
+Open Ghidra > file > New Project > Non-shared
+File > import file > selct.exe > double click imported file 
+
+Search > strings: > work from the end m seach for success
+
+##patching
+work backwards, look for success > 
+right click > patch intructions
+File > Export 
