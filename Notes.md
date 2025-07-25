@@ -50,7 +50,7 @@ proxychains nc (targetip) (taget port)
     http://127.0.0.1/robots.txt
 ### http-enum.nse
     A scirpt that can be used with nmao to enum the website off a webserver
-    nmap --scripts=http-enum.nse <ip>
+    nmap --script=http-enum.nse <ip>
 ## Methods of site traversal
 ### Inspect websever / Console
         changeText()
