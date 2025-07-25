@@ -334,10 +334,11 @@ LInux: ps -elf
 WIndows tasklist /svc
 linux chkconfig # sysv
 systemctl --type=service systemD
-#Network Enumation
+# Network Enumation
 windows: ipconfig /all
 ifconfig -a 
-ip a
+ip a |
+/etc/hosts
 
 # Data Exfiltrations
 session transicrt: ssh <user>@host | tee
