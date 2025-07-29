@@ -390,3 +390,56 @@ schtasks /query /fo LIST /v
     auditpol /get /category:*
     auditpol /get /category:* | findstr /i "success failure"
     Clear-Eventlog -Log Application, System
+# Linux Privelege escalation
+    sudo -l # show allowed sudo commands for user
+    gtfobins.com # look up commands from sudo -l apt-get
+    sudo apt-get update -o APT::Update::Pre-Invoke::=/b
+## SUID/SGID    
+        find / -type f -perm /4000 -ls 2>/dev/null # find SUID only files
+        find / -type f -perm /2000 -ls 2>/dev/null # find SGID only files
+        find / -type f -perm /6000 -ls 2>/dev/null # find SUID and SGID only files
+
+        find command and use gtfobins
+        use which to find command location
+        /ussr/bin/nice /bin/sh -p 
+
+        echo $PATH
+        PATH=.:$PATH # adds . to PATH
+
+        ls -latr /proc/1/exe
+stat /sbin/init
+man init
+init --version
+ps 1
+
+ausearch -p 22
+ausearch -m USER_LOGIN -sv no
+ausearch -ua edwards -ts yesterday -te now -i
+
+journalctl _TRANSPORT=audit
+journalctl _TRANSPORT=audit | grep 603
+
+auth.log/secure=Logins/authentications
+
+lastlog=Each users' last successful login time
+
+btmp=Bad login attempts
+
+sulog=Usage of SU command
+
+utmp=Currently logged in users (W command)
+
+wtmp=Permanent record on user on/off
+
+file /var/log/wtmp
+find /var/log -type f -mmin -10 2> /dev/null
+journalctl -f -u ssh
+journalctl -q SYSLOG_FACILITY=10 SYSLOG_FACILITY=4
+## TImestomp
+    touch -c -t 201603051015 1.txt   # Explicit
+    touch -r 3.txt 1.txt    # Reference
+
+## Rsyslog
+/etc/rsyslog
+/etc/rsyslog.d/*
+/etc/rsyslog.conf
