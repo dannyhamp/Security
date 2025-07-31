@@ -134,7 +134,7 @@ Added 2 and the 5 becuase the server side query did not display the second selec
 in the URL AFter Selection=1 OR 1=1
 cahnge selection number until info shows up
 
-## Step one, Identify vulnerable selection
+## Step one Identify vulnerable selection
     Selection=1 or 1=1
     selection=2 or 1=1
 ## Step Two Identify number of Columns
